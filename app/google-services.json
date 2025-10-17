@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "133958623995",
+    "project_id": "loginfirebase-d2c19",
+    "storage_bucket": "loginfirebase-d2c19.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133958623995:android:805e4af96e99c172ed865e",
+        "android_client_info": {
+          "package_name": "me.danielvillamizar.unabstore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiLifTK05DUqyG4kiifia77g2_SXgxZoo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

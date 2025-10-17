@@ -34,11 +34,14 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 @Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen() {
+fun LoginScreen(onClickRegister :()->Unit = {}) {
+    val auth = Firebase.auth
     Scaffold { paddingValues ->
         Column(
             modifier = Modifier
@@ -126,7 +129,7 @@ fun LoginScreen() {
             }
             Spacer(modifier = Modifier.height(16.dp))
             // Enlace para Registrarse
-            TextButton(onClick = {}) {
+            TextButton(onClick = {onClickRegister}) {
                 Text(
                     text = "¿No tienes una cuenta? Regístrate",
                     color = Color(0xFFFF9900)

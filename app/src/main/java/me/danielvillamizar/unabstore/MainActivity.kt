@@ -33,7 +33,7 @@ class MainActivity : ComponentActivity() {
                     LoginScreen()
                 }
                 composable (route = "register"){
-                    RegisterScreen()
+                    RegisterScreen(onClickRegister)
                 }
 
                 composable (route = "home"){
