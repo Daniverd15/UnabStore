@@ -23,8 +23,10 @@ import androidx.compose.material.icons.automirrored.filled.ExitToApp
 
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
-// Colores personalizados
+
 
 
 
@@ -33,52 +35,50 @@ import androidx.compose.material3.*
 @Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onClickLogout: () -> Unit = {}) {
+
+    val auth = Firebase.auth
+    val user = auth.currentUser
+
     Scaffold(
         topBar = {
             MediumTopAppBar(
-                title = {
-                    Text(
-                        "Unab Shop",
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 28.sp
-                    )
-                },
+                title = { Text("Inicio") },
                 actions = {
                     IconButton(onClick = { }) {
-                        Icon(Icons.Filled.Notifications, "Notificaciones")
+                        Icon(Icons.Filled.ShoppingCart, contentDescription = "Carrito")
                     }
-                    IconButton(onClick = { }) {
-                        Icon(Icons.Filled.ShoppingCart, "Carrito")
-                    }
-                    IconButton(onClick = { }) {
-                        Icon(Icons.AutoMirrored.Filled.ExitToApp, "Carrito")
+                    IconButton(onClick = {
+                        auth.signOut()
+                        onClickLogout()
+                    }) {
+                        Icon(
+                            Icons.AutoMirrored.Filled.ExitToApp,
+                            contentDescription = "Cerrar Sesión"
+                        )
                     }
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = Color(0xFFFF9900),
-                    titleContentColor = Color.White,
-                    actionIconContentColor = Color.White
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
                 )
             )
         },
-        bottomBar = {
-        }
-    ) { paddingValues ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color(0xFFF5F5F5))
-                .padding(paddingValues)
-        ) {
+        content = { paddingValues ->
             Column(
                 modifier = Modifier
-                    .fillMaxSize(),
+                    .fillMaxSize()
+                    .padding(paddingValues),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text("HOME SCREEN", fontSize = 30.sp)
+                if (user != null) {
+                    Text(user.email.toString())
+                } else {
+                    Text("No hay usuario")
+                }
             }
         }
-    }
+    )
 }
