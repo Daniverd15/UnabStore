@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.ui.text)
     implementation(libs.androidx.compose.runtime)
+    implementation(libs.firebase.firestore)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -65,7 +66,11 @@ dependencies {
 
     //firebase
     implementation(libs.firebase.bom)
+    implementation("com.google.firebase:firebase-firestore-ktx:24.10.0")
     //auth
     implementation(libs.firebase.auth)
+
+    implementation("com.google.firebase:firebase-firestore-ktx:24.9.1")
+    implementation("com.google.firebase:firebase-analytics-ktx:21.5.0")
 
 }
